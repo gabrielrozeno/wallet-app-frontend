@@ -73,6 +73,7 @@ input.default {
   color: black;
   border: 2px solid #06BEE1;
   border-radius: 8px;
+  padding-left: 3px;
 }
 
 input:active {
@@ -129,8 +130,4 @@ div.avatar {
 img.logo {
   width: 71px;
   height: auto;
-}
-
-.auth-container {
-  width: 432px;
 }
