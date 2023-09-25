@@ -94,6 +94,7 @@ button.auth {
   font-size: 16px;
   border: none;
   color: white;
+  cursor: pointer;
 }
 
 button.add {
@@ -106,6 +107,7 @@ button.add {
   font-weight: 700;
   font-size: 14px;
   color: black;
+  cursor: pointer;
 }
 
 div.card {
@@ -131,3 +133,16 @@ img.logo {
   width: 71px;
   height: auto;
 }
+
+.spaced {
+  margin-bottom: 8px;
+}
+
+.centered {
+  text-align: center  ;
+}
+
+.card-gap {
+  row-gap: 35px;
+}
+

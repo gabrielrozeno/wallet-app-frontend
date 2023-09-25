@@ -1,26 +1,39 @@
-.spaced {
-  margin-bottom: 8px;
-}
+@media only screen and (max-device-width: 450px) {
+  * {
+    overflow: hidden;
+  }
+  .root-container {
+    width: 100vw;
+  }
 
-.centered {
-  text-align: center  ;
+  .auth-container {
+    width: 96vw !important;
+  }
 }
-
 .auth-container {
   width: 432px;
 }
 
-.email-auth {
+.email-auth,
+.name-auth {
   display: flex;
-  flex-direction: column; 
-}
-
-.card-gap {
-  row-gap: 35px;
+  flex-direction: column;
+  margin-top: 15px;
 }
 
 .logo-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.actions {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 35px;
+}
+
+.email-error {
+  visibility: collapse;
 }

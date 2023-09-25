@@ -18,12 +18,13 @@
         <h3>Bem-vindo</h3>
         <p>Digite seu e-mail abaixo para ter acesso à aplicação financeira Wallet, e ter uma melhor controle dos seus gastos mensais.</p>
         <div class="email-auth">
-          <label for="email" class="spaced">E-mail:</label>
-        <input type="email" name="email" id="email" placeholder="Ex: Gabriel Rozeno" class="default">
+          <label for="auth-login-email" class="spaced">E-mail:</label>
+        <input type="email" name="auth-login-email" id="auth-login-email" placeholder="email@exemplo.com" class="default">
+        <p class="email-error" id="email-error">Email Inválido</p>
         </div>
       </div>
-      <button class="auth">Acessar</button>
-      <a href="#" class="centered">Não tem conta ? Faça seu cadastro aqui.</a>
+      <button onclick="onClickLogin()" class="auth">Acessar</button>
+      <a href="pages/register/" class="centered">Não tem conta? Faça seu cadastro aqui.</a>
     </div>
   </div>
   </div>
