@@ -34,6 +34,14 @@
   row-gap: 35px;
 }
 
-.email-error {
-  visibility: collapse;
+.auth-text,
+.form {
+  display: flex;
+  row-gap: 5px;
+  flex-direction: column;
+}
+
+.email-error,
+.name-error {
+  visibility: collapse !important;
 }

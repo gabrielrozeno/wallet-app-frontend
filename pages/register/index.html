@@ -1,37 +1,65 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wallet App - Cadastrar</title>
-  <link rel="stylesheet" href="../../style/style.css">
-  <link rel="stylesheet" href="../../style/auth.css">
-</head>
-<body>
-  <div class="root-container">
-  <div class="auth-container">
-    <div class="card card-gap">
-      <div class="logo-container">
-        <img src="../../src/img/logo.png" alt="Logo Wallet App" class="logo">
-      </div>
-      <div class="auth-text">
-        <h3>Novo Cadastro</h3>
-        <p>Insira seu nome e seu e-mail para ter acesso ao Wallet app e gerenciar suas finanças</p>
-        <div class="name-auth">
-          <label for="auth-register-name" class="spaced">Nome:</label>
-        <input type="text" name="auth-register-name" id="auth-register-name" placeholder="Insira seu nome" class="default">
-        <div class="email-auth">
-          <label for="auth-register-email" class="spaced">E-mail:</label>
-        <input type="email" name="auth-register-email" id="auth-register-email" placeholder="email@exemplo.com" class="default">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wallet App - Cadastrar</title>
+    <link rel="stylesheet" href="../../style/style.css" />
+    <link rel="stylesheet" href="../../style/auth.css" />
+  </head>
+  <body>
+    <div class="root-container">
+      <div class="auth-container">
+        <div class="card card-gap">
+          <div class="logo-container">
+            <img
+              src="../../src/img/logo.png"
+              alt="Logo Wallet App"
+              class="logo"
+            />
+          </div>
+          <div class="auth-text">
+            <h3>Novo Cadastro</h3>
+            <p>
+              Insira seu nome e seu e-mail para ter acesso ao Wallet app e
+              gerenciar suas finanças
+            </p>
+            <form id="form-register">
+              <div class="name-auth">
+                <label for="auth-register-name" class="spaced">Nome:</label>
+                <input
+                  type="text"
+                  name="auth-register-name"
+                  id="auth-register-name"
+                  placeholder="Insira seu nome"
+                  class="default"
+                  required
+                />
+                <div class="email-auth">
+                  <label for="auth-register-email" class="spaced"
+                    >E-mail:</label
+                  >
+                  <input
+                    type="email"
+                    name="auth-register-email"
+                    id="auth-register-email"
+                    placeholder="email@exemplo.com"
+                    class="default"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="actions">
+                <button class="auth" type="submit">Cadastrar</button>
+                <a href="/" class="centered"
+                  >Já tem conta? Faça seu login clicando aqui.</a
+                >
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-      <div class="actions">
-        <button class="auth">Cadastrar</button>
-        <a href="/" class="centered">Já tem conta? Faça seu login clicando aqui.</a>
-      </div>
     </div>
-  </div>
-  </div>
-  <script src="script/index.js"></script>
-</body>
+    <script src="index.js"></script>
+  </body>
 </html>
