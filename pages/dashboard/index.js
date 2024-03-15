@@ -71,7 +71,6 @@ const onLoadFinancesData = async () => {
       }
     );
     const data = await result.json();
-    console.log(data);
     renderFinanceElements(data);
     return data;
   } catch (error) {
