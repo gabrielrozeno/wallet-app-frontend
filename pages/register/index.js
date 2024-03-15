@@ -36,7 +36,7 @@ const onRegister = async () => {
     alert("Nome Inválido");
     return;
   }
-  if (email.length < 5 || !email.includes("@")) {
+  if (email.length < 5 || !email.includes("@") || !email.includes(".com")) {
     alert("Email Inválido");
     document.getElementById("auth-register-email").style.borderColor = "red";
     return;
@@ -46,6 +46,7 @@ const onRegister = async () => {
   if (result.error) {
     document.getElementById("auth-register-email").style.borderColor = "red";
     document.getElementById("auth-register-name").style.borderColor = "red";
+    alert("Não foi possível cadastrar esse usuário pois ele já existe.");
     return;
   }
 
