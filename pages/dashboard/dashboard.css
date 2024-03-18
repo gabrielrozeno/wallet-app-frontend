@@ -1,7 +1,7 @@
 body {
   padding: 0;
   margin: 0;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 .home-content-container {
   display: flex;
@@ -9,7 +9,7 @@ body {
   align-items: flex-start;
   justify-content: flex-start;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   background-color: #f4f4f9;
 }
 
@@ -71,7 +71,7 @@ body {
   justify-content: flex-start;
   background-color: #fff;
   border-radius: 24px;
-  height: 592px;
+  height: fit-content;
   padding: 0px 24px;
 }
 

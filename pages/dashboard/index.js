@@ -1,3 +1,59 @@
+const renderFinancesList = (data) => {
+  //
+  const table = document.getElementById("finances-table");
+  data.map((item) => {
+    const tableRow = document.createElement("tr");
+
+    //title
+    const titleTd = document.createElement("td");
+    const titleText = document.createTextNode(item.title);
+    titleTd.className = "left";
+    titleTd.appendChild(titleText);
+    tableRow.appendChild(titleTd);
+
+    //category
+    const categoryTd = document.createElement("td");
+    const categoryText = document.createTextNode(item.name);
+    categoryTd.className = "left";
+    categoryTd.appendChild(categoryText);
+    tableRow.appendChild(categoryTd);
+
+    table.appendChild(tableRow);
+
+    //data
+    const dateTd = document.createElement("td");
+    const dateText = document.createTextNode(
+      new Date(item.date).toLocaleDateString()
+    );
+    dateTd.className = "left";
+    dateTd.appendChild(dateText);
+    tableRow.appendChild(dateTd);
+
+    table.appendChild(tableRow);
+
+    //valor
+    const valueTd = document.createElement("td");
+    const valueText = document.createTextNode(
+      new Intl.NumberFormat("pt-br", {
+        style: "currency",
+        currency: "BRL",
+      }).format(item.value)
+    );
+    valueTd.className = "center";
+    valueTd.appendChild(valueText);
+    tableRow.appendChild(valueTd);
+
+    //deletar
+    const deleteTd = document.createElement("td");
+    const deleteText = document.createTextNode("Deletar");
+    deleteTd.className = "right";
+    deleteTd.appendChild(deleteText);
+    tableRow.appendChild(deleteTd);
+
+    table.appendChild(tableRow);
+  });
+};
+
 const renderFinanceElements = (data) => {
   const totalItems = data.length;
   const revenues = data
@@ -72,6 +128,7 @@ const onLoadFinancesData = async () => {
     );
     const data = await result.json();
     renderFinanceElements(data);
+    renderFinancesList(data);
     return data;
   } catch (error) {
     return { error };
