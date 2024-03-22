@@ -113,6 +113,29 @@ const renderFinanceElements = (data) => {
   financeCard4.appendChild(totalTextElement);
 };
 
+const onLoadCategories = async () => {
+  try {
+    const categoriesSelect = document.getElementById("category");
+    const response = await fetch(
+      `https://mp-wallet-app-api.herokuapp.com/categories`,
+      {
+        method: "GET",
+      }
+    );
+    const categoriesResult = await response.json();
+    categoriesResult.map((category) => {
+      const option = document.createElement("option");
+      const categoryText = document.createTextNode(category.name);
+      option.id = `category_${category.id}`;
+      option.value = category.id;
+      option.appendChild(categoryText);
+      categoriesSelect.appendChild(option);
+    });
+  } catch (error) {
+    console.log({ error });
+  }
+};
+
 const onLoadFinancesData = async () => {
   try {
     const email = localStorage.getItem("@WalletApp:userEmail");
@@ -164,7 +187,17 @@ const onLoadUserInfo = () => {
   navbarUserAvatar.appendChild(navbarUserAvatarElement);
 };
 
+const onClickCloseModal = () => {
+  const modalbg = document.getElementById("modal-bg");
+  modalbg.style.visibility = "collapse";
+};
+const onClickOpenModal = () => {
+  const modalbg = document.getElementById("modal-bg");
+  modalbg.style.visibility = "visible";
+};
+
 window.onload = () => {
   onLoadUserInfo();
   onLoadFinancesData();
+  onLoadCategories();
 };

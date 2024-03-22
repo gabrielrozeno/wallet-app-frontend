@@ -20,20 +20,20 @@
           <h3>Total de Lançamenntos</h3>
         </div>
         <div class="finance-card" id="finance-card-2">
-          <h3>Receitas</h3>
+          <h3>Entradas</h3>
         </div>
         <div class="finance-card" id="finance-card-3">
-          <h3>Despesas</h3>
+          <h3>Saídas</h3>
         </div>
         <div class="finance-card" id="finance-card-4">
-          <h3>Balanço</h3>
+          <h3>Saldo Final</h3>
         </div>
       </div>
       <div class="table-container">
         <div class="table-content-container">
           <div class="table-header">
             <h2>Últimos Lançamentos</h2>
-            <button class="add">Adicionar</button>
+            <button class="add" onclick="onClickOpenModal()">Adicionar</button>
           </div>
           <table id="finances-table">
             <tr>
@@ -44,6 +44,37 @@
               <th class="right">Ação</th>
             </tr>
           </table>
+        </div>
+      </div>
+    </div>
+    <div class="modal-background" id="modal-bg">
+      <div class="modal-content">
+        <div class="modal-content-header">
+          <h3>Adicionar Lançamento</h3>
+          <button onclick="onClickCloseModal()" class="add">Fechar</button>
+        </div>
+        <div class="modal-content-form">
+          <form class="finance-form">
+            <label for="title" class="spaced">Título</label>
+            <input
+              type="text"
+              placeholder="Ex: Compra de Supermercado"
+              class="default spaced"
+              id="title"
+            />
+            <label for="value" class="spaced">Valor</label>
+            <input
+              type="number"
+              placeholder="R$ 0,00"
+              class="default spaced"
+              id="value"
+            />
+            <label for="date" class="spaced">Data</label>
+            <input type="date" class="default spaced" id="date" />
+            <label for="category" class="spaced">Categoria</label>
+            <select name="category" id="category" class="spaced"></select>
+            <button class="auth">Salvar</button>
+          </form>
         </div>
       </div>
     </div>
