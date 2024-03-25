@@ -1,3 +1,19 @@
+const onDeleteItem = async (id) => {
+  try {
+    const email = localStorage.getItem("@WalletApp:userEmail");
+    await fetch(`https://mp-wallet-app-api.herokuapp.com/finances/${id}`, {
+      method: "DELETE",
+      headers: {
+        email: email,
+      },
+    });
+    onLoadFinancesData();
+  } catch (error) {
+    alert("Erro ao deletar item");
+    console.log({ error });
+  }
+};
+
 const renderFinancesList = (data) => {
   //
   const table = document.getElementById("finances-table");
@@ -77,6 +93,7 @@ const renderFinancesList = (data) => {
 
     //deletar
     const deleteTd = document.createElement("td");
+    deleteTd.onclick = () => onDeleteItem(item.id);
     const deleteText = document.createTextNode("Deletar");
     deleteTd.className = "right";
     deleteTd.appendChild(deleteText);
