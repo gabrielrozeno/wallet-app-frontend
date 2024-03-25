@@ -1,6 +1,7 @@
 const renderFinancesList = (data) => {
   //
   const table = document.getElementById("finances-table");
+  table.innerHTML = "";
   data.map((item) => {
     const tableRow = document.createElement("tr");
 
@@ -66,6 +67,13 @@ const renderFinanceElements = (data) => {
 
   // render total items
   const financeCard1 = document.getElementById("finance-card-1");
+  financeCard1.innerHTML = "";
+
+  const totalItemsTitle = document.createTextNode("Total de Lançamentos");
+  const totalItemsTitleElement = document.createElement("h3");
+  totalItemsTitleElement.appendChild(totalItemsTitle);
+  financeCard1.appendChild(totalItemsTitleElement);
+
   const totalItemsText = document.createTextNode(totalItems);
   const totalItemsTextElement = document.createElement("h2");
   totalItemsTextElement.className = "mt smaller";
@@ -74,6 +82,13 @@ const renderFinanceElements = (data) => {
 
   // render revenue
   const financeCard2 = document.getElementById("finance-card-2");
+  financeCard2.innerHTML = "";
+
+  const revenueTitle = document.createTextNode("Entradas");
+  const revenueTitleElement = document.createElement("h3");
+  revenueTitleElement.appendChild(revenueTitle);
+  financeCard2.appendChild(revenueTitleElement);
+
   const revenueText = document.createTextNode(
     new Intl.NumberFormat("pt-BR", {
       style: "currency",
@@ -87,6 +102,13 @@ const renderFinanceElements = (data) => {
 
   // render expenses
   const financeCard3 = document.getElementById("finance-card-3");
+  financeCard3.innerHTML = "";
+
+  const expensesTitle = document.createTextNode("Saídas");
+  const expensesTitleElement = document.createElement("h3");
+  expensesTitleElement.appendChild(expensesTitle);
+  financeCard3.appendChild(expensesTitleElement);
+
   const expenseText = document.createTextNode(
     new Intl.NumberFormat("pt-BR", {
       style: "currency",
@@ -100,6 +122,13 @@ const renderFinanceElements = (data) => {
 
   // render total
   const financeCard4 = document.getElementById("finance-card-4");
+  financeCard4.innerHTML = "";
+
+  const totalTitle = document.createTextNode("Saldo Final");
+  const totalTitleElement = document.createElement("h3");
+  totalTitleElement.appendChild(totalTitle);
+  financeCard4.appendChild(totalTitleElement);
+
   const totalText = document.createTextNode(
     new Intl.NumberFormat("pt-BR", {
       style: "currency",
@@ -196,8 +225,61 @@ const onClickOpenModal = () => {
   modalbg.style.visibility = "visible";
 };
 
+const onCallCreateFinance = async (data) => {
+  const email = localStorage.getItem("@WalletApp:userEmail");
+  const response = await fetch(
+    "https://mp-wallet-app-api.herokuapp.com/finances",
+    {
+      method: "POST",
+      mode: "cors",
+      cache: "no-cache",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+        email: email,
+      },
+      redirect: "follow",
+      referrerPolicy: "no-referrer",
+      body: JSON.stringify(data),
+    }
+  );
+};
+
+const onCreateFinanceRelease = async (target) => {
+  try {
+    const title = target[0].value;
+    const value = Number(target[1].value);
+    const date = target[2].value;
+    const category = Number(target[3].value);
+
+    const result = onCallCreateFinance({
+      title,
+      value,
+      date,
+      category_id: category,
+    });
+
+    if (result.error) {
+      alert("Erro ao adicionar transação");
+      return;
+    }
+
+    onClickCloseModal();
+    onLoadFinancesData();
+    renderFinanceElements();
+  } catch (error) {
+    console.log({ error });
+  }
+};
+
 window.onload = () => {
   onLoadUserInfo();
   onLoadFinancesData();
   onLoadCategories();
+
+  const form = document.getElementById("add-item-form");
+  form.onsubmit = (e) => {
+    e.preventDefault();
+    onCreateFinanceRelease(e.target);
+  };
 };

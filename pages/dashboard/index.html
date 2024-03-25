@@ -16,18 +16,10 @@
         </div>
       </div>
       <div class="finance-card-container">
-        <div class="finance-card" id="finance-card-1">
-          <h3>Total de Lançamenntos</h3>
-        </div>
-        <div class="finance-card" id="finance-card-2">
-          <h3>Entradas</h3>
-        </div>
-        <div class="finance-card" id="finance-card-3">
-          <h3>Saídas</h3>
-        </div>
-        <div class="finance-card" id="finance-card-4">
-          <h3>Saldo Final</h3>
-        </div>
+        <div class="finance-card" id="finance-card-1"></div>
+        <div class="finance-card" id="finance-card-2"></div>
+        <div class="finance-card" id="finance-card-3"></div>
+        <div class="finance-card" id="finance-card-4"></div>
       </div>
       <div class="table-container">
         <div class="table-content-container">
@@ -54,7 +46,7 @@
           <button onclick="onClickCloseModal()" class="add">Fechar</button>
         </div>
         <div class="modal-content-form">
-          <form class="finance-form">
+          <form class="finance-form" id="add-item-form">
             <label for="title" class="spaced">Título</label>
             <input
               type="text"
@@ -65,6 +57,7 @@
             <label for="value" class="spaced">Valor</label>
             <input
               type="number"
+              step="any"
               placeholder="R$ 0,00"
               class="default spaced"
               id="value"
@@ -73,7 +66,7 @@
             <input type="date" class="default spaced" id="date" />
             <label for="category" class="spaced">Categoria</label>
             <select name="category" id="category" class="spaced"></select>
-            <button class="auth">Salvar</button>
+            <button class="auth" type="submit">Salvar</button>
           </form>
         </div>
       </div>
