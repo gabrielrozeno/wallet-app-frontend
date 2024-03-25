@@ -1,3 +1,7 @@
+const onLogout = () => {
+  localStorage.clear;
+  window.open("../../../index.html", "_self");
+};
 const onDeleteItem = async (id) => {
   try {
     const email = localStorage.getItem("@WalletApp:userEmail");
@@ -252,6 +256,8 @@ const onLoadUserInfo = () => {
 
   // logout element
   const logoutElement = document.createElement("a");
+  logoutElement.onclick = () => onLogout();
+  logoutElement.style.cursor = "pointer";
   const logoutText = document.createTextNode("Sair");
   logoutElement.appendChild(logoutText);
 
