@@ -93,6 +93,7 @@ const renderFinancesList = (data) => {
 
     //deletar
     const deleteTd = document.createElement("td");
+    deleteTd.style.cursor = "pointer";
     deleteTd.onclick = () => onDeleteItem(item.id);
     const deleteText = document.createTextNode("Deletar");
     deleteTd.className = "right";
@@ -215,10 +216,10 @@ const onLoadCategories = async () => {
 
 const onLoadFinancesData = async () => {
   try {
+    const dateInput = document.getElementById("data-date").value;
     const email = localStorage.getItem("@WalletApp:userEmail");
-    const date = "2022-12-15";
     const result = await fetch(
-      `https://mp-wallet-app-api.herokuapp.com/finances?date=${date}`,
+      `https://mp-wallet-app-api.herokuapp.com/finances?date=${dateInput}`,
       {
         method: "GET",
         headers: {
@@ -320,10 +321,20 @@ const onCreateFinanceRelease = async (target) => {
   }
 };
 
+const setInitialDate = () => {
+  const dateInput = document.getElementById("data-date");
+  const dateNow = new Date().toISOString().split("T")[0];
+  dateInput.value = dateNow;
+  dateInput.addEventListener("change", () => {
+    onLoadFinancesData();
+  });
+};
+
 window.onload = () => {
   onLoadUserInfo();
   onLoadFinancesData();
   onLoadCategories();
+  setInitialDate();
 
   const form = document.getElementById("add-item-form");
   form.onsubmit = (e) => {
