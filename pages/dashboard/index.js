@@ -337,10 +337,10 @@ const setInitialDate = () => {
 };
 
 window.onload = () => {
+  setInitialDate();
   onLoadUserInfo();
   onLoadFinancesData();
   onLoadCategories();
-  setInitialDate();
 
   const form = document.getElementById("add-item-form");
   form.onsubmit = (e) => {
